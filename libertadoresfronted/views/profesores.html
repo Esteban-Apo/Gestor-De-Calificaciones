@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="icon" href="../img/Icono-a.ico" type="image/x-icon"> 
+    <title>Gestor de Calificaciones - Profesores</title>
+    
+</head>
+<body>
+    <div class="sidebar">
+        <h2 id="libertadores_titule">Libertadores</h2>
+        <ul>
+            <li><a href="perfil.html">Perfil</a></li>
+            <li><a href="estudiantes.html">Estudiantes</a></li>
+            <li><a href="profesores.html">Profesores</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="boletin.html">Boletin</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+
+        <h1>Profesores</h1>
+        <ul id="profesoresList"></ul>
+
+        <h1>Gestión de Profesores</h1>
+
+        <!-- Botón para abrir el modal de agregar profesor -->
+        <button id="btnAbrirModal">Agregar Profesor</button>
+    
+        <!-- Lista de profesores -->
+        <div id="profesores-container">
+            <ul id="profesores-list">
+                <!-- Los profesores se mostrarán aquí -->
+            </ul>
+        </div>
+    
+         <!-- Modal para agregar profesor -->
+        <div id="modalAgregarProfesor" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" id="btnCerrarModal">&times;</span>
+                <h2>Agregar Profesor</h2>
+                <form id="formAgregarProfesor">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="celular">Número de Celular:</label>
+                    <input type="tel" id="celular" name="celular" required>
+
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+
+        <h2>Asignar Materias a Profesores</h2>
+
+        <form id="asignarMateriaForm">
+            <label for="profesorSelect">Selecciona un Profesor:</label>
+            <select id="profesorSelect"></select>
+
+            <label for="materiaSelect">Selecciona una Materia:</label>
+            <select id="materiaSelect"></select>
+
+            <button type="submit">Asignar Materia</button>
+        </form>
+
+    </div>
+    <script src="../js/asignarMaterias.js"></script>
+    <script src="../js/profesores.js" defer></script>
+</body>
+</html>

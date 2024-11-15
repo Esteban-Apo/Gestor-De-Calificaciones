@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Materias de Octavo</title>
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="icon" href="../../img/Icono-a.ico" type="image/x-icon"> 
+    <script src="../../js/materias.js" defer></script>
+</head>
+<body data-curso-id="3"> <!--3: Octavo-->
+
+    <!-- Barra lateral fija -->
+   <div class="sidebar">
+    <h2  id="libertadores_titule">Libertadores</h2>
+    <ul>
+        <li><a href="../perfil.html">Perfil</a></li>
+        <li><a href="../estudiantes.html">Estudiantes</a></li>
+        <li><a href="../profesores.html">Profesores</a></li>
+        <li><a href="../cursos.html">Cursos</a></li>
+        <li><a href="../boletin.html">Boletin</a></li>
+    </ul>
+    </div>
+
+
+   <div class="main-content">
+    <h1>Materias de Octavo</h1>
+    <ul id="materias-list">
+        <!-- Aquí se cargarán las materias -->
+    </ul>
+
+    <h2>Agregar Materia</h2>
+    <form id="formAgregarMateria">
+        <input type="text" id="nombreMateria" placeholder="Nombre de la materia" required />
+        <button type="submit">Agregar Materia</button>
+    </form>
+
+    <a href="../cursos.html">Volver a Cursos</a>
+   </div>
+</body>
+</html>

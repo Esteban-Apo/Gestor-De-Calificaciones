@@ -1,0 +1,53 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Ajuste del contenido principal */
+ul#listaCursos {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+
+#sectioncurses {
+    margin-left: 290px; /* Ajusta este valor según el ancho de la sidebar */
+    padding: 20px;
+}
+
+#titule_curses {
+    color: #303972;
+    font-family: Poppins;
+    font-size:44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/*Cursos*/
+
+.cursos-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cursos-list ul li {
+    padding: 25px;
+    text-align: left;
+    color: black; 
+    font-size: 20px; 
+    font-weight: bolder;
+    font-weight: 500; 
+    letter-spacing: 2px;
+}
+
+.cursos-list ul li a {
+    color: rgb(48, 57, 114);
+    text-decoration: none;
+    display: block;
+}
+
+.cursos-list ul li a:hover {
+    color: rgb(6, 16, 78);
+}

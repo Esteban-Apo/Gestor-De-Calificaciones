@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.Libertadores {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio entre el logo y el título */
+    margin-bottom: 20px; /* Espacio entre el título y la sección de registro */
+}
+
+.logo {
+    width: 37px;
+    height: 37px;
+    background-color: #fd1a05;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.logo-text {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.Libertadores h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+
+
+/* Estilo para el main */
+#login {
+    width: 100%;
+    max-width: 400px;
+    height: 450px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 45px;
+    box-shadow: 0 8px 8px rgba(231, 124, 124, 0.753);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#IniciarSesion_titule {
+    width: 260.81px; 
+    height: 50.79px; 
+    margin-bottom: 10px;
+    color: #504D4D; 
+    font-size: 25px; 
+    font-weight: 700; 
+    align-content: left;
+    word-wrap: break-word;
+}
+
+/* Estilos del formulario */
+label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1F1F1F;
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    color: #4a4a4a;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+
+/* Botones */
+.buttons {
+    width: 100%;
+    padding: 13px;
+    margin-top: 15px;
+    background-color: #fd1a05;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.buttons:hover {
+    background-color: #e01404;
+}
+
+/* Botón para crear nueva cuenta */
+#button_new_account {
+    background: rgba(62, 4, 133, 0.65); 
+}
+
+#button_new_account:hover {
+    background: rgba(64, 6, 66, 0.65); 
+}
+
+
+@media (max-width: 768px) {
+    #login {
+        width: 95%; /* Ajuste del ancho en pantallas pequeñas */
+        padding: 20px;
+    }
+}

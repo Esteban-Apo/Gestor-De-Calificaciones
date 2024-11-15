@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/perfil.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="icon" href="../img/Icono-a.ico" type="image/x-icon"> 
+    <title>Perfil</title>
+</head>
+<body>
+    <div id="perfilSection">
+        <h1>Perfil</h1>
+        <h3>Rol: <span id="userRole"></span></h3>
+        <script>
+            // Obtener el rol desde localStorage
+            const userRole = document.getElementById('userRole');
+            const role = localStorage.getItem('userRole'); // Recuperar el rol del usuario
+
+            // Mostrar el rol del usuario
+            if (role) {
+                userRole.textContent = role;
+            } else {
+                userRole.textContent = 'No definido';
+            }
+        </script>
+    </div>
+
+    
+
+    <div class="calendar">
+        <h2>Calendario Libertadores</h2>
+        <p class="month">Noviembre 2024</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Domingo</th>
+              <th>Lunes</th>
+              <th>Martes</th>
+              <th>Miércoles</th>
+              <th>Jueves</th>
+              <th>Viernes</th>
+              <th>Sábado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="empty"></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+            </tr>
+            <tr>
+              <td>7</td><td class="highlight-purple">8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+            </tr>
+            <tr>
+              <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td class="highlight-red">20</td>
+            </tr>
+            <tr>
+              <td>21</td><td class="highlight-green">22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+            </tr>
+            <tr>
+              <td>28</td><td>29</td><td>30</td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+   
+    <div class="sidebar">
+        <h2 id="libertadores_titule">Libertadores</h2>
+        <ul>
+            <li><a href="perfil.html">Perfil</a></li>
+            <li><a href="estudiantes.html">Estudiantes</a></li>
+            <li><a href="profesores.html">Profesores</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="boletin.html">Boletin</a></li>
+        </ul>
+    </div>
+</body>
+</html>

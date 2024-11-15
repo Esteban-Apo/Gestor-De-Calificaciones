@@ -1,0 +1,104 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Ajuste para la sección del perfil */
+#perfilSection {
+    margin-left: 290px; 
+    padding: 20px;
+}
+
+#perfilSection h1 {
+    color: var(--Color-Text, #303972);
+    letter-spacing: 1px;
+    font-family: Poppins;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+/* Ajuste de estilo para la barra lateral */
+#CalendarioSection {
+    margin-top: 350px;
+    margin-left: 290px; 
+    padding: 20px;
+    width: 1007px;
+    height: 403.994px;
+    flex-shrink: 0; 
+}
+
+.img{
+    width: 950px;
+}
+
+/*  Calendario  */
+  .calendar {
+    width: 100%;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-left: 290px;
+    margin-top: 200px;
+    text-align: center;
+  }
+  
+  .calendar h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .calendar .month {
+    font-size: 1em;
+    color: #888;
+    margin-top: 5px;
+  }
+  
+  .calendar table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .calendar th {
+    color: #888;
+    padding: 10px 0;
+  }
+  
+  .calendar td {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 50%;
+  }
+  
+  .calendar td.empty {
+    background-color: transparent;
+  }
+  
+  .calendar td {
+    color: #555;
+  }
+  
+  /* Estilos para los días destacados */
+  .calendar .highlight-purple {
+    background-color: #c78aff;
+    color: white;
+  }
+  
+  .calendar .highlight-green {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .calendar .highlight-red {
+    background-color: #f44336;
+    color: white;
+  }
+  
+
