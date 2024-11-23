@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="icon" href="../img/Icono-a.ico" type="image/x-icon"> 
     <title>Gestor de Calificaciones - Profesores</title>
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/profesores.css">
+    <link rel="icon" href="../img/Icono-a.ico" type="image/x-icon"> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+   
+
     
+
 </head>
 <body>
     <div class="sidebar">
@@ -23,19 +29,25 @@
     <div class="main-content">
 
         <h1>Profesores</h1>
-        <ul id="profesoresList"></ul>
-
-        <h1>Gestión de Profesores</h1>
-
-        <!-- Botón para abrir el modal de agregar profesor -->
-        <button id="btnAbrirModal">Agregar Profesor</button>
-    
+        <ul id="profesoresList"></ul>   
         <!-- Lista de profesores -->
         <div id="profesores-container">
-            <ul id="profesores-list">
-                <!-- Los profesores se mostrarán aquí -->
-            </ul>
+            
+            <table class= "table" >
+                <thead>
+                    <tr id="info_table">
+                        <th class= "titule_table">Nombre</th>
+                        <th class= "titule_table">Correo</th>
+                        <th class= "titule_table">Celular</th>
+                        <th class= "titule_table">Materias</th>
+                    </tr>
+                </thead>
+                <tbody id="profesoresTableBody"></tbody>
+            </table>
         </div>
+        
+         <!-- Botón para abrir el modal de agregar profesor -->
+         <button id="btnAbrirModal">Agregar Profesor</button>
     
          <!-- Modal para agregar profesor -->
         <div id="modalAgregarProfesor" class="modal" style="display: none;">
@@ -57,19 +69,45 @@
             </div>
         </div>
 
-        <h2>Asignar Materias a Profesores</h2>
+        <div class="formularios-container">
+            <div class="formulario">
+                <h2>Asignar Materias a Profesores</h2>
+                <form id="asignarMateriaForm">
+                    <label for="profesorSelect"></label>
+                    <select id="profesorSelect">
+                        <option value="" disabled selected>Selecciona un profesor</option>
+                    </select>
+                
+                    <label for="cursoSelect"></label>
+                    <select id="cursoSelect">
+                        <option value="" disabled selected>Selecciona un curso</option>
+                    </select>
+                
+                    <label for="materiaSelect"></label>
+                    <select id="materiaSelect" disabled>
+                        <option value="" disabled selected>Selecciona una materia</option>
+                    </select>
+                
+                    <button type="submit">Asignar Materia</button>
+                </form>
+            </div>
+        
+            <div class="formulario">
+                <h2>Eliminar profesor</h2>
+                <form id="eliminarProfesorForm">
+                    <label for="profesorEliminarSelect"></label>
+                    <select id="profesorEliminarSelect"></select>
+                
+                    <button type="submit">Eliminar Profesor</button>
+                </form>
+            </div>
+        </div>
 
-        <form id="asignarMateriaForm">
-            <label for="profesorSelect">Selecciona un Profesor:</label>
-            <select id="profesorSelect"></select>
-
-            <label for="materiaSelect">Selecciona una Materia:</label>
-            <select id="materiaSelect"></select>
-
-            <button type="submit">Asignar Materia</button>
-        </form>
+        
+        
 
     </div>
+     
     <script src="../js/asignarMaterias.js"></script>
     <script src="../js/profesores.js" defer></script>
 </body>

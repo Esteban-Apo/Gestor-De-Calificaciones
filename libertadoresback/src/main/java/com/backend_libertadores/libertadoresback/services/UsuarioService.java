@@ -9,7 +9,9 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.backend_libertadores.libertadoresback.domain.Estudiante;
 import com.backend_libertadores.libertadoresback.domain.Usuario;
+import com.backend_libertadores.libertadoresback.infrastructure.EstudianteRepository;
 import com.backend_libertadores.libertadoresback.infrastructure.UsuarioRepository;
 
 
@@ -19,6 +21,9 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository; 
+
+    @Autowired
+    private EstudianteRepository estudianteRepository;
 
     private static final String PASSWORD_PATTERN = 
         "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$"; // Validación de una contraseña segura
@@ -39,9 +44,13 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
-    public void eliminarUsuario(Long id) { // Eliminar usuario por su ID
+    public void eliminarUsuario(Long id) {
+        if (!usuarioRepository.existsById(id)) {
+            throw new IllegalArgumentException("Usuario no encontrado.");
+        }
         usuarioRepository.deleteById(id);
     }
+    
 
     //Métodos de autenticación y registro
 
@@ -49,18 +58,29 @@ public class UsuarioService {
         return usuarioRepository.findByEmailAndContraseña(email, contraseña);
     }
 
-    public Usuario registrarUsuario(Usuario usuario) { // Registrar un nuevo usuario
+    //Registrar Usuario
+    public Usuario registrarUsuario(Usuario usuario) {
+        // Validar si el correo ya está registrado
         if (emailExiste(usuario.getEmail())) {
             throw new IllegalArgumentException("El correo ya está registrado.");
         }
-
+    
+        // Validar si la contraseña cumple con los requisitos
         if (!validarPassword(usuario.getContraseña())) {
             throw new IllegalArgumentException("La contraseña no cumple con los requisitos de seguridad.");
         }
-
+    
+        // Asignar el rol por defecto y guardar el usuario
         usuario.setRol("Estudiante");
-        return usuarioRepository.save(usuario);
+        Usuario nuevoUsuario = usuarioRepository.save(usuario);
+    
+        // Crear el registro de estudiante
+        Estudiante estudiante = new Estudiante(nuevoUsuario);
+        estudianteRepository.save(estudiante);
+    
+        return nuevoUsuario;
     }
+    
 
     // *** Métodos de validación ***
 

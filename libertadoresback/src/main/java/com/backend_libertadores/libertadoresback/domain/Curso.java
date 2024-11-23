@@ -25,6 +25,18 @@ public class Curso {
     @JsonManagedReference // Evita la referencia cíclica
     private List<Materia> materias;
 
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference // Maneja la serialización de estudiantes
+    private List<Estudiante> estudiantes; // Relación con estudiantes
+
+    // Constructor vacío
+    public Curso() {}
+
+    // Constructor
+    public Curso(String nombreCurso) {
+        this.nombreCurso = nombreCurso;
+    }
+
     // Getters y setters
     public Long getId() {
         return id;
@@ -48,5 +60,13 @@ public class Curso {
 
     public void setMaterias(List<Materia> materias) {
         this.materias = materias;
+    }
+
+    public List<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(List<Estudiante> estudiantes) {
+        this.estudiantes = estudiantes;
     }
 }

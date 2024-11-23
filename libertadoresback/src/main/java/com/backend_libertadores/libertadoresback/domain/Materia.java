@@ -1,15 +1,14 @@
 package com.backend_libertadores.libertadoresback.domain;
 
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 
@@ -21,13 +20,18 @@ public class Materia {
 
     private String nombre;
 
-    @ManyToOne
+    
+    @ManyToOne(fetch = FetchType.EAGER) // Asegúrate de usar carga EAGER para el curso
     @JoinColumn(name = "curso_id")
-    @JsonBackReference // Evita la referencia cíclica
+    @JsonIgnore // Evita que Jackson serialice el curso al convertir a JSON
     private Curso curso;
+    
 
-    @ManyToMany(mappedBy = "materias")
-    private Set<Profesor> profesores;
+    @ManyToOne 
+    @JoinColumn(name = "profesor_id", nullable = true)
+    @JsonManagedReference
+    private Profesor profesores;
+    
 
     // Getters y Setters
     public Long getId() {
@@ -54,11 +58,11 @@ public class Materia {
         this.curso = curso;
     }
 
-    public Set<Profesor> getProfesores() {
+    public Profesor getProfesores() {
         return profesores; 
     }
 
-    public void SetProfesores(Set<Profesor> profesores){
+    public void setProfesores(Profesor profesores){
         this.profesores = profesores; 
     }
 }

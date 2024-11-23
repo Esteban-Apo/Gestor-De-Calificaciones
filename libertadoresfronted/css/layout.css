@@ -114,4 +114,9 @@ h1 {
     letter-spacing: 2px;
 }
 
+#mensaje-resultado {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
 

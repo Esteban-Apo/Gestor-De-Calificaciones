@@ -1,9 +1,12 @@
 package com.backend_libertadores.libertadoresback.web;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +20,7 @@ import com.backend_libertadores.libertadoresback.domain.Curso;
 import com.backend_libertadores.libertadoresback.domain.Materia;
 import com.backend_libertadores.libertadoresback.infrastructure.CursoRepository;
 import com.backend_libertadores.libertadoresback.infrastructure.MateriaRepository;
+import com.backend_libertadores.libertadoresback.infrastructure.ProfesorRepository;
 
 @RestController
 @RequestMapping("/api/materias")
@@ -26,7 +30,9 @@ public class MateriaController {
     private final MateriaRepository materiaRepository;
     private final CursoRepository cursoRepository;
 
-    public MateriaController(MateriaRepository materiaRepository, CursoRepository cursoRepository) {
+   
+
+    public MateriaController(MateriaRepository materiaRepository, CursoRepository cursoRepository, ProfesorRepository profesorRepository) {
         this.materiaRepository = materiaRepository;
         this.cursoRepository = cursoRepository;
     }
@@ -49,30 +55,46 @@ public class MateriaController {
     }
     
 
-    //Agregar las materias a los cursos
     @PostMapping("/curso/{cursoId}")
-    public ResponseEntity<?> agregarMateriaACurso(@PathVariable Long cursoId, @RequestBody Materia materia) {
-    Optional<Curso> cursoOptional = cursoRepository.findById(cursoId);
-    if (!cursoOptional.isPresent()) {
-        return ResponseEntity.notFound().build();
-    }
+    public ResponseEntity<?> agregarMateriaACurso(@PathVariable Long cursoId, @RequestBody Map<String, Object> payload) {
+        try {
+            // Recupera el nombre de la materia
+            String nombreMateria = (String) payload.get("nombre");
     
-    Curso curso = cursoOptional.get();
-    materia.setCurso(curso);
-    Materia nuevaMateria = materiaRepository.save(materia);
+            // Buscar el curso al que se asignará la materia
+            Curso curso = cursoRepository.findById(cursoId)
+                .orElseThrow(() -> new IllegalArgumentException("Curso no encontrado"));
     
-    return ResponseEntity.ok(nuevaMateria);  // Verifica que aquí se devuelve solo el objeto "nuevaMateria"
+            // Verificar si ya existe una materia con el mismo nombre en el curso
+            Optional<Materia> materiaExistente = materiaRepository.findByNombreAndCurso(nombreMateria, curso);
+            if (materiaExistente.isPresent() && materiaExistente.get().getProfesores() != null) {
+                return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body(Collections.singletonMap("message", "Esta materia ya tiene un profesor asignado"));
+            }
+    
+            // Crear la nueva materia
+            Materia nuevaMateria = new Materia();
+            nuevaMateria.setNombre(nombreMateria);
+            nuevaMateria.setCurso(curso);
+    
+            // No asignamos profesor inicialmente, por lo que será null
+            nuevaMateria.setProfesores(null);
+    
+            // Guardar la materia en el repositorio
+            materiaRepository.save(nuevaMateria);
+    
+            return ResponseEntity.ok(Collections.singletonMap("message", "Materia creada exitosamente."));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Error al crear la materia: " + e.getMessage());
+        }
     }
 
+
     @GetMapping("/curso/{cursoId}")
-    public ResponseEntity<?> obtenerMateriasPorCurso(@PathVariable Long cursoId) {
-        Optional<Curso> cursoOptional = cursoRepository.findById(cursoId);
-        if (!cursoOptional.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        
-        Curso curso = cursoOptional.get();
-        return ResponseEntity.ok(curso.getMaterias());
+    public ResponseEntity<List<Materia>> obtenerMateriasPorCurso(@PathVariable Long cursoId) {
+        List<Materia> materias = materiaRepository.findByCursoId(cursoId);
+        return ResponseEntity.ok(materias);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.backend_libertadores.libertadoresback.web;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class UsuarioController {
        return usuarioService.crearUsuario(usuario);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/detalle/{id}")
     public Optional<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
         return usuarioService.obtenerUsuarioPorId(id);
     }
@@ -44,9 +45,15 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public void eliminarUsuario(@PathVariable Long id){
-        usuarioService.eliminarUsuario(id);
+    public ResponseEntity<?> eliminarUsuario(@PathVariable Long id) {
+        try {
+            usuarioService.eliminarUsuario(id); // Eliminar usuario
+            return ResponseEntity.ok("Usuario eliminado exitosamente.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al eliminar el usuario.");
+        }
     }
+    
 
     
     @GetMapping("/profesores")
@@ -78,8 +85,9 @@ public class UsuarioController {
              Usuario nuevoUsuario = usuarioService.registrarUsuario(usuario);
              return ResponseEntity.ok(nuevoUsuario);
          } catch (IllegalArgumentException e) {
-             return ResponseEntity.badRequest().body(e.getMessage());
+             // Devuelve un error 409 con un cuerpo JSON
+             return ResponseEntity.status(HttpStatus.CONFLICT)
+                                  .body(Map.of("error", e.getMessage()));
          }
      }
-
 }

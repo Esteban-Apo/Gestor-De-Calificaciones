@@ -1,0 +1,148 @@
+
+/* Títulos */
+.main-content h2 {
+    text-align: left;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Formulario de agregar */
+.form-agregar {
+    
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.form-agregar input {
+    flex: 1 1 30%;
+    padding: 10px;
+    border: 1px solid rgba(62.69, 10.54, 126.44, 0.73);
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-agregar .btn-primary {
+    padding: 10px 20px;
+    border: none;
+    background-color: rgba(62.69, 10.54, 126.44, 0.73);
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-agregar .btn-primary:hover {
+    background-color: rgba(37, 4, 77, 0.73);;
+}
+
+/* Tabla */
+.table-minimalist {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table-minimalist th,
+.table-minimalist td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.table-minimalist th {
+    background-color: rgba(62.69, 10.54, 126.44, 0.73);;
+    color: white;
+    font-weight: bold;
+}
+
+.table-minimalist tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-minimalist tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Botones */
+.table-minimalist .btn-delete {
+    padding: 5px 10px;
+    border: none;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.table-minimalist .btn-delete:hover {
+    background-color: #c0392b;
+}
+
+/* Layout del formulario */
+.form-layout {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px 30px;
+    max-width: 450px;
+    margin-top: 50px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilización del título */
+.form-layout h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Estilización de grupos de formularios */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Etiquetas */
+.form-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+}
+
+/* Inputs */
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #6c63ff;
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* Botón principal */
+.btn-primary {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #6c63ff;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #4e47b8;
+}

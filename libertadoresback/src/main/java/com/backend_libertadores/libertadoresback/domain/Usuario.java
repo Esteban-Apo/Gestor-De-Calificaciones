@@ -1,9 +1,14 @@
 package com.backend_libertadores.libertadoresback.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +21,11 @@ public class Usuario {
     private String email;
     private String contraseña;
     private String rol; 
+
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true,  fetch = FetchType.LAZY, optional = false)
+    @JsonBackReference
+    private Estudiante estudiante;
+
 
 
     public Usuario(){
@@ -61,6 +71,14 @@ public class Usuario {
 
     public void setRol(String rol) {
         this.rol = rol; 
+    }
+ 
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
     }
 
 

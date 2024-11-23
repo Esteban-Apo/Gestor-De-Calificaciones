@@ -25,7 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
     formAgregarMateria.addEventListener("submit", (event) => {
         event.preventDefault();
     
-        const materia = { nombre: inputNombreMateria.value };
+        const materia = { 
+            nombre: inputNombreMateria.value,
+            profesorId: null 
+        };
     
         fetch(`http://localhost:8080/api/materias/curso/${cursoId}`, {
             method: "POST",
@@ -34,16 +37,38 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => {
             if (!response.ok) {
-                return response.text().then(text => { throw new Error(text) });
+                // Si hay un error HTTP, lanza una excepción
+                return response.json().then(errorData => {
+                    throw new Error(errorData.message || "Error al procesar la solicitud.");
+                });
             }
-            return response.json();
+            return response.json(); // Procesar como JSON si la respuesta es exitosa
         })
         .then(data => {
-            mostrarMateria(data);
-            formAgregarMateria.reset();
+            // Muestra un mensaje de éxito con SweetAlert2
+            Swal.fire({
+                icon: "success",
+                title: "Materia agregada",
+                text: data.message || "La materia se ha agregado exitosamente.",
+                confirmButtonText: "Aceptar"
+            }).then(() => {
+                // Opcional: recarga la página o actualiza la lista de materias
+                location.reload(); // Actualiza la página para reflejar los cambios
+            });
         })
-        .catch(error => console.error("Error al agregar materia:", error));
+        .catch(error => {
+            console.error("Error al agregar materia:", error);
+    
+            // Muestra un mensaje de error con SweetAlert2
+            Swal.fire({
+                icon: "error",
+                title: "Error al agregar materia",
+                text: error.message || "Ocurrió un error al intentar agregar la materia. Intenta nuevamente.",
+                confirmButtonText: "Entendido"
+            });
+        });
     });
+    
 
     // Cargar las materias al iniciar la página
     cargarMaterias();
