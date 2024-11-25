@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend_libertadores.libertadoresback.domain.Estudiante;
+import com.backend_libertadores.libertadoresback.dto.EstudianteDTO;
 import com.backend_libertadores.libertadoresback.infrastructure.EstudianteRepository;
 import com.backend_libertadores.libertadoresback.services.EstudianteService;
 
@@ -59,6 +60,29 @@ public class EstudianteController {
         return estudianteRepository.findByUsuarioEmail(email)
                 .map(estudiante -> ResponseEntity.ok((Object) estudiante)) // Éxito: devuelve el estudiante
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body((Object) "Estudiante no encontrado")); // Error: devuelve mensaje
+    }
+
+      // Obtener detalles de un estudiante por su ID
+    @GetMapping("/{estudianteId}")
+    public ResponseEntity<Estudiante> obtenerEstudiantePorId(@PathVariable Long estudianteId) {
+        return estudianteRepository.findById(estudianteId)
+                .map(estudiante -> ResponseEntity.ok(estudiante))
+                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+
+    @GetMapping("/curso/{cursoId}/materia/{materiaId}")
+    public ResponseEntity<List<EstudianteDTO>> obtenerEstudiantesPorCursoYMateria(
+            @PathVariable Long cursoId,
+            @PathVariable Long materiaId) {
+
+        List<Estudiante> estudiantes = estudianteRepository.findByCursoIdAndMateriaId(cursoId, materiaId);
+
+        // Convertir a DTO
+        List<EstudianteDTO> estudiantesDTO = estudiantes.stream()
+                .map(est -> new EstudianteDTO(est.getId(), est.getUsuario().getNombre(), est.getUsuario().getEmail()))
+                .toList();
+
+        return ResponseEntity.ok(estudiantesDTO);
     }
 
 }

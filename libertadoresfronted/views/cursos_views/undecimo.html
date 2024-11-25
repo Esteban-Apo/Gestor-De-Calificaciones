@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Materias de Undecimo</title>
     <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/grados.css"> <!-- Cursos -->
     <link rel="icon" href="../../img/Icono-a.ico" type="image/x-icon"> 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../js/materias.js" defer></script>
+    <script src="../../js/estudiantesCurso.js" defer></script>
 </head>
 <body data-curso-id="6"> <!-- 6: Undecimo-->
 
@@ -23,16 +25,20 @@
     </div>
 
    <div class="main-content">
-    <h1>Materias de Undecimo</h1>
-    <ul id="materias-list">
-        <!-- Aquí se cargarán las materias -->
-    </ul>
+        <h1>Materias de Undecimo</h1>
+        <ul id="materias-list">
+            <!-- Aquí se cargarán las materias -->
+        </ul>
 
-    <h2>Agregar Materia</h2>
-    <form id="formAgregarMateria">
-        <input type="text" id="nombreMateria" placeholder="Nombre de la materia" required />
-        <button type="submit">Agregar Materia</button>
-    </form>
+        <h2>Agregar Materia</h2>
+        <form id="formAgregarMateria">
+            <input type="text" id="nombreMateria" placeholder="Nombre de la materia" required />
+            <button type="submit">Agregar Materia</button>
+        </form>
+        <div id="contenedor-estudiantes">
+            <h2>Lista de estudiantes</h2>
+            <ul id="lista-estudiantes"></ul>
+        </div>
 
     <a href="../cursos.html">Volver a Cursos</a>
    </div>

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/estudiantes.css">
     <link rel="icon" href="../img/Icono-a.ico" type="image/x-icon"> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Gestor de Calificaciones - Estudiantes</title>
    
 </head>
@@ -51,10 +52,24 @@
                 <button type="submit" class="btn-primary">Agregar Estudiante</button>
             </form>
         </div>
+        <h2>Agregar Estudiante a Curso</h2>
+        <form id="formAgregarEstudianteCurso">
+            <input type="email" id="emailEstudiante" placeholder="Email del estudiante" required />
+            <select id="cursoSelect">
+                <option value="1">Sexto</option>
+                <option value="2">Séptimo</option>
+                <option value="3">Octavo</option>
+                <option value="4">Noveno</option>
+                <option value="5">Decimo</option>
+                <option value="6">Undecimo</option>
+            </select>
+            <button type="submit">Agregar Estudiante</button>
+        </form>
         
     </div>
     
 
     <script src="../js/estudiantes.js" defer></script>
+    <script src="../js/asignarCursosEstudiantes.js" defer></script>
 </body>
 </html>

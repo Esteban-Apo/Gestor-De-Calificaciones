@@ -1,0 +1,38 @@
+/* Estilo general de la tabla */
+.tabla-estudiantes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+/* Encabezado de la tabla */
+.tabla-estudiantes thead {
+    background-color: rgba(73, 21, 137, 0.73);
+    font-weight: bold;
+}
+
+.tabla-estudiantes th,
+.tabla-estudiantes td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+
+/* Botón de eliminar */
+.btn-eliminar {
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-eliminar:hover {
+    background-color: #e60000;
+}

@@ -1,7 +1,6 @@
 package com.backend_libertadores.libertadoresback.web;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,11 +82,10 @@ public class UsuarioController {
      public ResponseEntity<?> registrarUsuario(@RequestBody Usuario usuario) {
          try {
              Usuario nuevoUsuario = usuarioService.registrarUsuario(usuario);
-             return ResponseEntity.ok(nuevoUsuario);
+             return ResponseEntity.status(HttpStatus.CREATED).body(nuevoUsuario);
          } catch (IllegalArgumentException e) {
-             // Devuelve un error 409 con un cuerpo JSON
-             return ResponseEntity.status(HttpStatus.CONFLICT)
-                                  .body(Map.of("error", e.getMessage()));
+             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
          }
      }
+ 
 }

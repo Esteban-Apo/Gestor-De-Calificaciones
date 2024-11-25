@@ -59,27 +59,25 @@ public class UsuarioService {
     }
 
     //Registrar Usuario
-    public Usuario registrarUsuario(Usuario usuario) {
-        // Validar si el correo ya está registrado
-        if (emailExiste(usuario.getEmail())) {
-            throw new IllegalArgumentException("El correo ya está registrado.");
-        }
-    
-        // Validar si la contraseña cumple con los requisitos
-        if (!validarPassword(usuario.getContraseña())) {
-            throw new IllegalArgumentException("La contraseña no cumple con los requisitos de seguridad.");
-        }
-    
-        // Asignar el rol por defecto y guardar el usuario
-        usuario.setRol("Estudiante");
-        Usuario nuevoUsuario = usuarioRepository.save(usuario);
-    
-        // Crear el registro de estudiante
-        Estudiante estudiante = new Estudiante(nuevoUsuario);
-        estudianteRepository.save(estudiante);
-    
-        return nuevoUsuario;
+   public Usuario registrarUsuario(Usuario usuario) {
+    if (emailExiste(usuario.getEmail())) {
+        throw new IllegalArgumentException("El correo ya está registrado.");
     }
+
+    if (!validarPassword(usuario.getContraseña())) {
+        throw new IllegalArgumentException("La contraseña debe de tener almenos 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial.");
+    }
+
+    usuario.setRol("Estudiante");
+    Usuario nuevoUsuario = usuarioRepository.save(usuario);
+
+    // Crear el registro de estudiante
+    Estudiante estudiante = new Estudiante(nuevoUsuario);
+    estudianteRepository.save(estudiante);
+
+    return nuevoUsuario;
+}
+
     
 
     // *** Métodos de validación ***

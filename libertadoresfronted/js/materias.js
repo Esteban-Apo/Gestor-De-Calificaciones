@@ -1,35 +1,52 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const cursoId = document.body.dataset.cursoId; // Suponiendo que se pasa el ID del curso en el HTML
-    const materiasList = document.getElementById("materias-list");
+    const cursoId = document.body.dataset.cursoId;
     const formAgregarMateria = document.getElementById("formAgregarMateria");
     const inputNombreMateria = document.getElementById("nombreMateria");
-
-    // Función para mostrar las materias en la lista
-    function mostrarMateria(materia) {
-        const materiaItem = document.createElement("li");
-        materiaItem.textContent = materia.nombre;
-        materiasList.appendChild(materiaItem);
-    }
 
     // Cargar las materias del curso
     function cargarMaterias() {
         fetch(`http://localhost:8080/api/materias/curso/${cursoId}`)
             .then(response => response.json())
             .then(materias => {
-                materias.forEach(mostrarMateria);
+                const listaMaterias = document.getElementById("materias-list");
+                listaMaterias.innerHTML = ""; // Limpiar contenido previo
+
+                materias.forEach(materia => {
+                    // Crear elemento de la lista
+                    const itemMateria = document.createElement("li");
+                    itemMateria.textContent = materia.nombre;
+
+                    // Botón para ingresar calificaciones
+                    const botonCalificaciones = document.createElement("button");
+                    botonCalificaciones.textContent = "Ingresar Calificaciones";
+                    botonCalificaciones.className = "btn-calificaciones";
+                    botonCalificaciones.onclick = () => abrirVistaCalificaciones(materia.id);
+
+                    // Añadir botón al elemento
+                    itemMateria.appendChild(botonCalificaciones);
+                    listaMaterias.appendChild(itemMateria);
+                });
             })
             .catch(error => console.error("Error al cargar materias:", error));
+    }
+
+    // Redirigir a la vista de calificaciones
+    function abrirVistaCalificaciones(materiaId) {
+        // Obtén el cursoId del atributo dataset del body
+        const cursoId = document.body.dataset.cursoId;
+        // Incluye cursoId y materiaId en la URL
+        window.location.href = `../calificaciones.html?cursoId=${cursoId}&materiaId=${materiaId}`;
     }
 
     // Agregar nueva materia
     formAgregarMateria.addEventListener("submit", (event) => {
         event.preventDefault();
-    
+
         const materia = { 
             nombre: inputNombreMateria.value,
             profesorId: null 
         };
-    
+
         fetch(`http://localhost:8080/api/materias/curso/${cursoId}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -37,29 +54,25 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => {
             if (!response.ok) {
-                // Si hay un error HTTP, lanza una excepción
                 return response.json().then(errorData => {
                     throw new Error(errorData.message || "Error al procesar la solicitud.");
                 });
             }
-            return response.json(); // Procesar como JSON si la respuesta es exitosa
+            return response.json();
         })
         .then(data => {
-            // Muestra un mensaje de éxito con SweetAlert2
             Swal.fire({
                 icon: "success",
                 title: "Materia agregada",
                 text: data.message || "La materia se ha agregado exitosamente.",
                 confirmButtonText: "Aceptar"
             }).then(() => {
-                // Opcional: recarga la página o actualiza la lista de materias
-                location.reload(); // Actualiza la página para reflejar los cambios
+                location.reload();
             });
         })
         .catch(error => {
             console.error("Error al agregar materia:", error);
-    
-            // Muestra un mensaje de error con SweetAlert2
+
             Swal.fire({
                 icon: "error",
                 title: "Error al agregar materia",
@@ -68,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
-    
 
     // Cargar las materias al iniciar la página
     cargarMaterias();

@@ -11,6 +11,8 @@ import com.backend_libertadores.libertadoresback.domain.Estudiante;
 import com.backend_libertadores.libertadoresback.infrastructure.CursoRepository;
 import com.backend_libertadores.libertadoresback.infrastructure.EstudianteRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class CursoService {
 
@@ -36,21 +38,28 @@ public class CursoService {
         return cursoRepository.findById(id);
     }
 
+    public List<Estudiante> obtenerEstudiantesPorCurso(Long cursoId) {
+        Curso curso = cursoRepository.findById(cursoId)
+            .orElseThrow(() -> new EntityNotFoundException("Curso no encontrado"));
+
+        return curso.getEstudiantes(); // Devuelve la lista directamente
+    }
+
     // Agregar estudiante a un curso
     public Curso agregarEstudianteACurso(Long cursoId, Long estudianteId) {
-        Optional<Curso> cursoOpt = cursoRepository.findById(cursoId);
-        Optional<Estudiante> estudianteOpt = estudianteRepository.findById(estudianteId);
+        Curso curso = cursoRepository.findById(cursoId)
+                .orElseThrow(() -> new IllegalArgumentException("Curso no encontrado"));
 
-        if (cursoOpt.isPresent() && estudianteOpt.isPresent()) {
-            Curso curso = cursoOpt.get();
-            Estudiante estudiante = estudianteOpt.get();
+        Estudiante estudiante = estudianteRepository.findById(estudianteId)
+                .orElseThrow(() -> new IllegalArgumentException("Estudiante no encontrado"));
 
-            estudiante.setCurso(curso); // Relacionar estudiante con el curso
-            estudianteRepository.save(estudiante);
-
-            return curso;
-        } else {
-            throw new IllegalArgumentException("Curso o estudiante no encontrado.");
+        if (estudiante.getCurso() != null) {
+            throw new IllegalArgumentException("El estudiante ya está asignado a un curso");
         }
+
+        curso.getEstudiantes().add(estudiante);
+        estudiante.setCurso(curso);
+
+        return cursoRepository.save(curso);
     }
 }

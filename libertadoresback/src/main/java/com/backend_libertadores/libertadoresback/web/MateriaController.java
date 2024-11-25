@@ -69,7 +69,7 @@ public class MateriaController {
             Optional<Materia> materiaExistente = materiaRepository.findByNombreAndCurso(nombreMateria, curso);
             if (materiaExistente.isPresent() && materiaExistente.get().getProfesores() != null) {
                 return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body(Collections.singletonMap("message", "Esta materia ya tiene un profesor asignado"));
+                    .body(Collections.singletonMap("message", "Esta materia ya existe en este curso."));
             }
     
             // Crear la nueva materia
