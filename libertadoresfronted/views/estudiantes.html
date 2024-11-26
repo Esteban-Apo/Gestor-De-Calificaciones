@@ -23,7 +23,7 @@
     </div>
 
     <div class="main-content">
-        <h2>Lista de Estudiantes</h2>
+        <h2 class="lista_estudiantes_class">Lista de Estudiantes</h2>
         <table class="table-minimalist">
             <thead>
                 <tr>
@@ -34,37 +34,50 @@
             </thead>
             <tbody id="listaEstudiantes"></tbody>
         </table>
-        <div class="form-layout">
-            <h2>Agregar Nuevo Estudiante</h2>
-            <form id="formAgregarEstudiante" class="form-agregar">
-                <div class="form-group">
-                    <label for="nombreCompleto">Nombre completo</label>
-                    <input type="text" id="nombreCompleto" placeholder="Nombre completo" required />
-                </div>
-                <div class="form-group">
-                    <label for="email">Correo</label>
-                    <input type="email" id="email" placeholder="Correo" required />
-                </div>
-                <div class="form-group">
-                    <label for="contraseña">Contraseña</label>
-                    <input type="password" id="contraseña" placeholder="Contraseña" required />
-                </div>
-                <button type="submit" class="btn-primary">Agregar Estudiante</button>
-            </form>
+        
+        <div class="container">
+            <div class="form-layout">
+                <h2>Agregar Nuevo Estudiante</h2>
+                <form id="formAgregarEstudiante" class="form-agregar">
+                    <div class="form-group">
+                        <label for="nombreCompleto">Nombre completo</label>
+                        <input type="text" id="nombreCompleto" placeholder="Nombre completo" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo</label>
+                        <input type="email" id="email" placeholder="Correo" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="contraseña">Contraseña</label>
+                        <input type="password" id="contraseña" placeholder="Contraseña" required />
+                    </div>
+                    <button type="submit" class="btn-primary">Agregar Estudiante</button>
+                </form>
+            </div>
+            
+            <div class="form-layout">
+                <h2>Agregar Estudiante a Curso</h2>
+                <form id="formAgregarEstudianteCurso" class="form-agregar-curso">
+                    <div class="form-group">
+                        <label for="emailEstudiante">Email del estudiante</label>
+                        <input type="email" id="emailEstudiante" placeholder="Email del estudiante" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="cursoSelect">Seleccionar Curso</label>
+                        <select id="cursoSelect">
+                            <option value="1">Sexto</option>
+                            <option value="2">Séptimo</option>
+                            <option value="3">Octavo</option>
+                            <option value="4">Noveno</option>
+                            <option value="5">Décimo</option>
+                            <option value="6">Undécimo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Agregar Estudiante</button>
+                </form>
+            </div>
+    
         </div>
-        <h2>Agregar Estudiante a Curso</h2>
-        <form id="formAgregarEstudianteCurso">
-            <input type="email" id="emailEstudiante" placeholder="Email del estudiante" required />
-            <select id="cursoSelect">
-                <option value="1">Sexto</option>
-                <option value="2">Séptimo</option>
-                <option value="3">Octavo</option>
-                <option value="4">Noveno</option>
-                <option value="5">Decimo</option>
-                <option value="6">Undecimo</option>
-            </select>
-            <button type="submit">Agregar Estudiante</button>
-        </form>
         
     </div>
     

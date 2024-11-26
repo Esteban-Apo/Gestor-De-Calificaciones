@@ -12,7 +12,7 @@
 
 /* Encabezado de la tabla */
 .tabla-estudiantes thead {
-    background-color: rgba(73, 21, 137, 0.73);
+    background-color: #5D3A9B;
     font-weight: bold;
 }
 
@@ -26,7 +26,7 @@
 /* Botón de eliminar */
 .btn-eliminar {
     padding: 5px 10px;
-    background-color: #ff4d4d;
+    background-color: #148F77;
     color: white;
     border: none;
     border-radius: 4px;
@@ -34,5 +34,115 @@
 }
 
 .btn-eliminar:hover {
-    background-color: #e60000;
+    background-color:  #1b6e5e;
 }
+
+
+/* Estilo para el enlace "volver" */
+.volver {
+    display: inline-block; /* Hace que el enlace solo ocupe el espacio de su contenido */
+    padding: 10px 20px;/* Espaciado interno */
+    background-color: #148F77; /* Color de fondo */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    text-align: center; /* Centra el texto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para el botón */
+}
+
+/* Estilo para el efecto hover */
+.volver:hover {
+    background-color: #1b6e5e;  /* Cambia el color al pasar el cursor */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
+}
+
+/*Materias*/
+
+.main-content ul {
+    list-style-type: none;
+    padding: 0;
+    
+}
+
+.main-content ul li {
+    padding: 25px;
+    text-align: left;
+    color: black; 
+    font-size: 20px; 
+    font-weight: bolder;
+    font-weight: 500; 
+    letter-spacing: 2px;    
+}
+
+#mensaje-resultado {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+
+form {
+    background-color: white; /* Fondo del formulario */
+    border: 2px solid #5D3A9B;/* Borde con el color predominante */
+    border-radius: 8px; /* Esquinas redondeadas */
+    padding: 20px;
+    width: 300px; /* Ancho fijo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+  }
+  
+  form h2 {
+    color: #5D3A9B; /* Título con color predominante */
+    margin-bottom: 15px; /* Espaciado inferior */
+    text-align: center;
+  }
+  
+  form input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px; /* Espaciado entre el input y el botón */
+    border: 1px solid #5D3A9B;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  form button {
+    background-color: #148F77; /* Botón con color complementario */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  form button:hover {
+    background-color: #148F77; /* Oscurece el botón al pasar el mouse */
+  }
+
+  /* Botón de calificaciones */
+    .btn-calificaciones {
+        background-color: #148F77; /* Color de fondo morado */
+        color: white; /* Texto blanco */
+        border: none; /* Sin bordes */
+        border-radius: 5px; /* Esquinas redondeadas */
+        padding: 8px 15px; /* Espaciado interno */
+        font-size: 14px; /* Tamaño de fuente */
+        font-weight: bold; /* Texto en negrita */
+        cursor: pointer; /* Cursor de mano al pasar */
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+        margin-left: 40px; /* Espacio entre el texto y el botón */
+    }
+    
+    .btn-calificaciones:hover {
+        background-color: #18826d;  /* Color más oscuro al pasar el mouse */
+        transform: scale(1.05); /* Pequeño efecto de agrandamiento */
+    }
+    
+    .btn-calificaciones:active {
+        background-color: #0b6855;  /* Color aún más oscuro al hacer clic */
+        transform: scale(0.95); /* Efecto de reducción al presionar */
+    }
+  

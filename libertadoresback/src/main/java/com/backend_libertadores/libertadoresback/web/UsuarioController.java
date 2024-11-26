@@ -1,6 +1,8 @@
 package com.backend_libertadores.libertadoresback.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,8 @@ public class UsuarioController {
         return usuarioService.listarUsuarios();
     }
 
+    
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarUsuario(@PathVariable Long id) {
         try {
@@ -65,17 +69,41 @@ public class UsuarioController {
         return usuarioService.findByRol("Estudiante");
     }
 
+    @GetMapping("/rol/{email}")
+    public ResponseEntity<?> obtenerRolPorEmail(@PathVariable String email) {
+        Optional<Usuario> usuario = usuarioService.buscarPorEmail(email);
+
+        if (usuario.isPresent()) {
+            Map<String, String> respuesta = new HashMap<>();
+            respuesta.put("rol", usuario.get().getRol());
+            return ResponseEntity.ok(respuesta);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
+        }
+    }
+    
+
     //metodo para logear un usuario 
-    @PostMapping("/login")
+   @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Usuario usuario) {
-    Optional<Usuario> usuarioAutenticado = usuarioService.autenticarUsuario(usuario.getEmail(), usuario.getContraseña());
+        Optional<Usuario> usuarioAutenticado = usuarioService.autenticarUsuario(usuario.getEmail(), usuario.getContraseña());
 
         if (usuarioAutenticado.isPresent()) {
-            return ResponseEntity.ok(usuarioAutenticado.get());
+            Usuario usuarioEncontrado = usuarioAutenticado.get();
+
+            // Crear un mapa personalizado para enviar al frontend
+            Map<String, Object> respuesta = new HashMap<>();
+            respuesta.put("id", usuarioEncontrado.getId());
+            respuesta.put("nombre", usuarioEncontrado.getNombre());
+            respuesta.put("email", usuarioEncontrado.getEmail());
+            respuesta.put("rol", usuarioEncontrado.getRol()); // Incluimos el rol del usuario
+
+            return ResponseEntity.ok(respuesta);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
         }
     }
+
 
      // Método para registrar un nuevo usuario
      @PostMapping("/register")

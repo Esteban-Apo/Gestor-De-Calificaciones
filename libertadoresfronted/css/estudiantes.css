@@ -1,10 +1,6 @@
 
 /* Títulos */
-.main-content h2 {
-    text-align: left;
-    margin-bottom: 20px;
-    color: #555;
-}
+
 
 /* Formulario de agregar */
 .form-agregar {
@@ -17,7 +13,7 @@
 .form-agregar input {
     flex: 1 1 30%;
     padding: 10px;
-    border: 1px solid rgba(62.69, 10.54, 126.44, 0.73);
+    border: 1px solid #5D3A9B;
     border-radius: 5px;
     font-size: 14px;
 }
@@ -25,7 +21,7 @@
 .form-agregar .btn-primary {
     padding: 10px 20px;
     border: none;
-    background-color: rgba(62.69, 10.54, 126.44, 0.73);
+    background-color: #5D3A9B;
     color: white;
     border-radius: 5px;
     font-size: 14px;
@@ -52,7 +48,7 @@
 }
 
 .table-minimalist th {
-    background-color: rgba(62.69, 10.54, 126.44, 0.73);;
+    background-color: #5D3A9B;
     color: white;
     font-weight: bold;
 }
@@ -69,7 +65,7 @@
 .table-minimalist .btn-delete {
     padding: 5px 10px;
     border: none;
-    background-color: #e74c3c;
+    background-color: #1ABC9C;
     color: white;
     border-radius: 5px;
     cursor: pointer;
@@ -77,7 +73,7 @@
 }
 
 .table-minimalist .btn-delete:hover {
-    background-color: #c0392b;
+    background-color: #2aa990;
 }
 
 /* Layout del formulario */
@@ -136,7 +132,7 @@
     width: 100%;
     border: none;
     border-radius: 5px;
-    background-color: #6c63ff;
+    background-color: #5D3A9B;
     color: #fff;
     font-size: 14px;
     cursor: pointer;
@@ -144,5 +140,86 @@
 }
 
 .btn-primary:hover {
-    background-color: #4e47b8;
+    background-color: #442083
 }
+
+/* Formulario de agregar estudiante a curso */
+.form-agregar-curso {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-agregar-curso label {
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+}
+
+.form-agregar-curso select,
+.form-agregar-curso input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-agregar-curso input:focus,
+.form-agregar-curso select:focus {
+    border-color: #5D3A9B;
+    background-color: #ffffff;
+    outline: none;
+}
+
+.form-agregar-curso .btn-primary {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color:#5D3A9B;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-agregar-curso .btn-primary:hover {
+    background-color:rgba(37, 11, 69, 0.73);
+}
+
+/* Estilo general del contenedor */
+.container {
+    display: flex; /* Activar flexbox */
+    gap: 50px; /* Espaciado adicional entre los divs */
+    padding: 20px; /* Espaciado interno del contenedor */
+}
+
+/* Estilo para cada layout */
+.layout {
+    flex: 0; /* Ocupa la misma cantidad de espacio disponible */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Opcional: para pantallas pequeñas, los divs se apilan */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Cambiar a columna */
+    }
+}
+
+.lista_estudiantes_class{
+    color: #5D3A9B;
+    font-family: Poppins;
+    font-size:44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+

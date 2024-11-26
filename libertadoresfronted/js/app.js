@@ -110,8 +110,7 @@ if (registerForm) {
 }
 
 
-    // Llamar a la función de verificación de rol
-    await verificarRol();
+    
 
 });
 

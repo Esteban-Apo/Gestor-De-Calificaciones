@@ -6,9 +6,9 @@
 }
 
 .main-content form {
-    background-color:#d4cbcb;
+    background-color:#f9f9f9;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 10px;
     margin-bottom: 30px;
     width: 400px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -31,7 +31,7 @@
 }
 
 .main-content button {
-    background-color: rgba(63, 11, 126, 0.9);
+    background-color: #5D3A9B;
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
@@ -59,7 +59,7 @@
 }
 
 .modal-content {
-    background-color: #c9c2c2; /* Fondo blanco */
+    background-color:#f9f9f9; /* Fondo blanco */
     padding: 30px; /* Ajusta el margen interno del modal */
     border-radius: 15px;
     width: 100%;
@@ -67,14 +67,14 @@
     text-align: center;
     color: #000;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(131, 48, 233, 0.9); /* Borde delgado color morado */
+    border: 1px solid #5D3A9B; /* Borde delgado color morado */
     position: relative;
 }
 
 .modal-content h2 {
     margin-bottom: 20px;
     font-size: 20px;
-    color: #4b0082; /* Título con tono morado */
+    color: #5D3A9B; /* Título con tono morado */
 }
 
 .modal-content label {
@@ -88,7 +88,7 @@
     margin-bottom: 15px; /* Espacio entre las cajas de texto */
     padding: 10px;
     width: calc(100% - 20px); /* Hace que no ocupen todo el ancho */
-    border: 1px solid #4b0082; /* Borde de los inputs en morado */
+    border: 1px solid #5D3A9B; /* Borde de los inputs en morado */
     border-radius: 5px;
     font-size: 14px;
 }
@@ -99,15 +99,15 @@
 
 .modal-content input:focus {
     outline: none;
-    border-color: rgba(131, 48, 233, 0.9); /* Color del borde al enfocar */
-    box-shadow: 0 0 5px rgba(131, 48, 233, 0.5);
+    border-color:#5D3A9B; /* Color del borde al enfocar */
+    box-shadow: 0 0 5px #5D3A9B;
 }
 
 .modal-content button {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
-    background-color: rgba(131, 48, 233, 0.9);
+    background-color:#5D3A9B;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -118,7 +118,7 @@
 
 .modal-content button:hover {
     transform: scale(1.05);
-    background-color: rgba(100, 30, 180, 0.9);
+    background-color: #5D3A9B;
 }
 
 .modal-content .close {
@@ -126,13 +126,13 @@
     top: 10px;
     right: 15px;
     font-size: 24px;
-    color: #4b0082;
+    color: #5D3A9B;
     cursor: pointer;
     transition: color 0.3s;
 }
 
 .modal-content .close:hover {
-    color: rgba(131, 48, 233, 0.9);
+    color: rgba(78, 22, 146, 0.9)
 }
 
 /*Tabla con lista de profesores*/
@@ -151,7 +151,7 @@
 }
 
 .table th {
-    background-color: rgba(62.69, 10.54, 126.44, 0.73);;
+    background-color: #5D3A9B;
     color: white;
     font-weight: bold;
 }
@@ -166,11 +166,9 @@
 
 /* Contenedor general de los formularios */
 .formularios-container {
-    display: flex;
-    justify-content:space-around;
-    align-items: flex-start;
-    gap: 10px; /* Reduce el espacio entre los formularios */
-    margin: 0; /* Elimina cualquier margen adicional */
+    display: flex; /* Activar flexbox */
+    gap: 100px; /* Espaciado adicional entre los divs */
+    padding: 20px; /* Espaciado interno del contenedor */
 }
 
 /* Estilo individual para cada formulario */

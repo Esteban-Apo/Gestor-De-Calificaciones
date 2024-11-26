@@ -44,7 +44,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
     margin-left: 290px;
-    margin-top: 200px;
+    margin-top: 90px;
     text-align: center;
   }
   
@@ -85,20 +85,56 @@ body {
     color: #555;
   }
   
-  /* Estilos para los días destacados */
-  .calendar .highlight-purple {
-    background-color: #c78aff;
-    color: white;
+  .salir {
+    display: inline-block; /* Hace que el enlace solo ocupe el espacio de su contenido */
+    padding: 10px 20px;/* Espaciado interno */
+    background-color: #148F77; /* Color de fondo */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    text-align: center; /* Centra el texto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para el botón */
   }
-  
-  .calendar .highlight-green {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .calendar .highlight-red {
-    background-color: #f44336;
-    color: white;
-  }
-  
+
+  .salir:hover {
+    background-color: #1b6e5e;  /* Cambia el color al pasar el cursor */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
+}
+/* Noticias */
+.news {
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-left: 290px;
+}
+
+.news h2 {
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  color: #303972;
+}
+
+.news ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.news li {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.news li strong {
+  color: #303972;
+}
+
+.Rol {
+ color: #148F77;
+}
 

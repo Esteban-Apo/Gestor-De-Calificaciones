@@ -87,6 +87,11 @@ public class UsuarioService {
         return usuarioRepository.findByEmail(email).isPresent();
     }
 
+    // Método para buscar un usuario por email
+      public Optional<Usuario> buscarPorEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+
     // Validar si la contraseña cumple con los requisitos de seguridad
     public boolean validarPassword(String password) {
         return pattern.matcher(password).matches();

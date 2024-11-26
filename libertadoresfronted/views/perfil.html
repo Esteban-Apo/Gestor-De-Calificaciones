@@ -11,7 +11,7 @@
 <body>
     <div id="perfilSection">
         <h1>Perfil</h1>
-        <h3>Rol: <span id="userRole"></span></h3>
+        <h3 class="Rol"><span id="userRole"></span></h3>
         <script>
             // Obtener el rol desde localStorage
             const userRole = document.getElementById('userRole');
@@ -24,9 +24,23 @@
                 userRole.textContent = 'No definido';
             }
         </script>
-        <a href="index.html">Salir</a>
+        <a class="salir" href="index.html">Cerrar sesión</a>
     </div>
 
+    <div class="news">
+      <h2>Noticias y Anuncios</h2>
+      <ul>
+          <li>
+              <strong>30 de Noviembre:</strong> Se cierra el período de inscripción para nuevos cursos.
+          </li>
+          <li>
+              <strong>15 de Diciembre:</strong> Publicación de boletines finales para todos los estudiantes.
+          </li>
+          <li>
+              <strong>20 de Diciembre:</strong> Cierre oficial del calendario académico.
+          </li>
+      </ul>
+    </div>
     
 
     <div class="calendar">
